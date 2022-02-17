@@ -15,15 +15,20 @@ Including another URLconf
 """
 from venv import create
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from main.views import default, createThought, list, home
+from polls.views import index, detail, results, vote
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/deepthoughts', default),
-    path('polls', home),
-
+    # path('polls', home),
     path('polls/deepthoughts/list', list),
-    path('polls/create', createThought)
+    path('polls/create', createThought),
+    path('polls/', include('polls.urls')),
+
+
     
 
 ]
